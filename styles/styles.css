@@ -1,0 +1,695 @@
+/* ============================================
+   Christopher Osita - Portfolio
+   External stylesheet (styles.css)
+   Order: variables -> base -> navbar -> hero
+          -> sections -> footer -> responsive
+   ============================================ */
+
+/* ---------- 1. CSS VARIABLES (colors) ---------- */
+:root {
+  --bg: #0f0f0f;
+  --bg-alt: #1a1a1a;
+  --text: #f5f5f5;
+  --text-muted: #a0a0a0;
+  --accent: #3b82f6;
+  --error: #ef4444;
+  --success: #22c55e;
+}
+
+/* Light theme - JavaScript adds this class to <body> */
+body.light-theme {
+  --bg: #f5f5f5;
+  --bg-alt: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #555555;
+}
+
+/* ---------- 2. BASE STYLES ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;   /* smooth scrolling for nav links */
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Keyboard focus ring (accessibility) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- 3. BUTTONS ---------- */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;      /* buttons don't inherit fonts by default */
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  border: 2px solid var(--accent);
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+/* ---------- 4. NAVBAR ---------- */
+.navbar {
+  position: fixed;           /* stays on top while scrolling */
+  top: 0;
+  width: 100%;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--bg-alt);
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Menu + buttons stay side by side */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent);
+}
+
+/* Hamburger button - hidden on desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* Theme (dark/light) button */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* ---------- 5. HERO SECTION ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;         /* full screen height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Background video - fills the hero, scales on every screen size */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* keeps video proportions, crops edges */
+  object-position: center;   /* keeps the laptop in view on all screens */
+  pointer-events: none;      /* clicks pass through to buttons */
+  z-index: -2;
+}
+
+/* Overlay: darker in the middle (behind the text), lighter at the edges
+   so the illustration details stay visible */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.5) 55%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
+  z-index: -1;
+}
+
+.hero-content {
+  max-width: 750px;
+  padding: 100px 20px 40px;
+}
+
+/* Shadow keeps text readable over any video */
+.hero-hello,
+.hero h1,
+.hero-title,
+.hero-tagline {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9);
+}
+
+.hero-hello {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 10px 0;
+  color: #f5f5f5;            /* always light - sits over dark video */
+}
+
+.hero-title {
+  font-size: 1.5rem;
+  color: #cbd5e1;            /* fixed light - theme colors would vanish here */
+}
+
+.hero-tagline {
+  margin: 20px auto;
+  max-width: 550px;
+  color: #cbd5e1;            /* fixed light - theme colors would vanish here */
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Custom video control buttons */
+.video-controls {
+  margin-top: 35px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.video-controls button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--text-muted);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.video-controls button:hover {
+  background-color: var(--accent);
+}
+
+/* ---------- 6. SECTIONS (shared) ---------- */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.section-alt {
+  max-width: none;           /* full-width background... */
+  background-color: var(--bg-alt);
+}
+
+.section-alt .section-title,
+.section-alt .skills-list,
+.section-alt .contact-form,
+.section-alt .social-links {
+  max-width: 1100px;
+  margin-left: auto;         /* ...but content stays aligned */
+  margin-right: auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+/* ---------- 7. ABOUT ---------- */
+.about-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-content p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.about-content .btn {
+  margin-top: 10px;
+}
+
+/* ---------- 8. SKILLS ---------- */
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.skills-list li {
+  background-color: var(--bg);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.skills-list li:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- 9. PROJECTS ---------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* 3 cards per row */
+  gap: 25px;
+}
+
+.project-card {
+  background-color: var(--bg-alt);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 20px;
+}
+
+.project-info h3 {
+  margin-bottom: 8px;
+}
+
+.project-info p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.project-links {
+  display: flex;
+  gap: 18px;
+  font-weight: 600;
+}
+
+/* ---------- 10. CONTACT FORM ---------- */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--text-muted);
+  border-radius: 8px;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+}
+
+/* Red border when input has an error (JS adds this class) */
+.form-group input.invalid,
+.form-group textarea.invalid {
+  border-color: var(--error);
+}
+
+/* Error text under inputs - hidden until JS writes text */
+.error-message {
+  display: block;
+  color: var(--error);
+  font-size: 0.85rem;
+  margin-top: 5px;
+  min-height: 18px;          /* keeps layout from jumping */
+}
+
+/* Success message after valid submit */
+.success-message {
+  color: var(--success);
+  font-weight: 600;
+  margin-top: 15px;
+  min-height: 24px;
+}
+
+.social-links {
+  max-width: 600px;
+  margin: 30px auto 0;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* ---------- 11. FOOTER ---------- */
+.footer {
+  text-align: center;
+  padding: 25px 20px;
+  background-color: var(--bg-alt);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- 12. SCROLL REVEAL ANIMATION ---------- */
+/* Elements start invisible - JS adds .visible on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- 13. RESPONSIVE DESIGN ---------- */
+
+/* Tablet: 2 project cards per row */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Phone: hamburger menu, 1 card per row */
+@media (max-width: 768px) {
+  .logo-full {
+    display: none;              /* header shows only "Osita" on phones */
+  }
+
+  .nav-toggle {
+    display: block;                  /* show hamburger */
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg);
+    border-bottom: 1px solid var(--bg-alt);
+    display: none;                   /* hidden until clicked */
+  }
+
+  .nav-menu.open {
+    display: block;                  /* JS adds this class */
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+  }
+
+  .nav-menu li a {
+    display: block;
+    padding: 12px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero-title {
+    font-size: 1.2rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;      /* 1 card per row */
+  }
+
+  .section {
+    padding: 60px 20px;
+  }
+}
+
+/* ---------- 14. ACCESSIBILITY: reduce motion ---------- */
+/* Respects the visitor's system setting */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- 15. HERO TYPING + ENTRANCE ANIMATIONS ---------- */
+
+/* Blinking cursor after the typed name */
+#heroName::after {
+  content: "|";
+  color: var(--accent);
+  font-weight: 400;
+  margin-left: 4px;
+  animation: blink 0.9s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Shared entrance: fade up */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero parts appear one after another, timed to finish
+   after the typing (17 letters x 110ms = ~1.9s) */
+.hero-title,
+.hero-tagline,
+.hero-buttons,
+.video-controls {
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-title      { animation-delay: 2.1s; }
+.hero-tagline    { animation-delay: 2.4s; }
+.hero-buttons    { animation-delay: 2.7s; }
+.video-controls  { animation-delay: 3s; }
+
+/* Section titles: blue underline grows when section appears */
+.section-title.visible::after {
+  animation: growLine 0.7s ease 0.25s backwards;
+}
+
+@keyframes growLine {
+  from { width: 0; }
+  to   { width: 60px; }
+}
+
+/* Skill tags pop in one by one */
+.skills-list.visible li {
+  animation: popIn 0.45s ease both;
+}
+
+.skills-list li:nth-child(1) { animation-delay: 0.05s; }
+.skills-list li:nth-child(2) { animation-delay: 0.15s; }
+.skills-list li:nth-child(3) { animation-delay: 0.25s; }
+.skills-list li:nth-child(4) { animation-delay: 0.35s; }
+.skills-list li:nth-child(5) { animation-delay: 0.45s; }
+.skills-list li:nth-child(6) { animation-delay: 0.55s; }
+
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(15px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- 16. ABOUT BUTTONS ---------- */
+.about-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* ---------- 17. VIDEO MODAL (how I built this) ---------- */
+.video-modal {
+  position: fixed;
+  inset: 0;                            /* covers the whole screen */
+  background-color: rgba(0, 0, 0, 0.85);
+  display: none;                       /* hidden until button clicked */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2000;
+}
+
+.video-modal.open {
+  display: flex;                       /* JS adds this class */
+}
+
+.video-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--bg-alt);
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.video-modal-box video {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.video-modal-caption {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+.video-modal-close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.video-modal-close:hover {
+  background-color: var(--error);
+}
+
+@media (max-width: 768px) {
+  .video-modal-close {
+    top: 6px;
+    right: 6px;
+  }
+}

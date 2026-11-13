@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Christopher Osita - Software Engineer and student at MIVA Open University. View my projects and get in touch.">
+
+  <!-- Social sharing tags (Open Graph) -->
+  <meta property="og:title" content="Christopher Osita | Software Engineer">
+  <meta property="og:description" content="Portfolio of Christopher Osita - Software Engineer, MIVA Open University.">
+  <meta property="og:type" content="website">
+
+  <title>Christopher Osita | Software Engineer</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- External script (defer = runs after HTML loads) -->
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION BAR ============ -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo"><span class="logo-full">Christopher </span>Osita</a>
+
+      <!-- Menu and toggles live together -->
+      <div class="nav-actions">
+        <!-- Navigation links -->
+        <nav class="nav-menu" id="navMenu">
+          <ul>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Mobile menu button (hamburger) -->
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+          &#9776;
+        </button>
+
+        <!-- Dark / light mode button -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          &#127769;
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section id="home" class="hero">
+      <!-- Background video: small version on phones, full on desktop -->
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+        <source src="assets/hero-mobile.mp4" media="(max-width: 768px)" type="video/mp4">
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <p class="hero-hello">Hi, my name is</p>
+        <h1><span id="heroName">Christopher Osita</span></h1>
+        <p class="hero-title">Software Engineer</p>
+        <p class="hero-tagline">
+          Student at MIVA Open University. I build clean, fast,
+          and user-friendly websites with HTML, CSS, and JavaScript.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-outline">Hire Me</a>
+        </div>
+
+        <!-- Custom video controls (built with JavaScript) -->
+        <div class="video-controls">
+          <button id="playPauseBtn" aria-label="Play or pause video">&#10074;&#10074;</button>
+          <button id="muteBtn" aria-label="Mute or unmute video">&#128263;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT SECTION ============ -->
+    <section id="about" class="section">
+      <h2 class="section-title reveal">About Me</h2>
+      <div class="about-content reveal">
+        <p>
+          I'm Christopher Osita, a software engineering student at MIVA Open University.
+          I enjoy turning ideas into websites that are simple to use and pleasant to look at.
+        </p>
+        <p>
+          I work with HTML, CSS, and JavaScript to build pages that load fast,
+          work on every screen size, and are easy to maintain. I'm currently
+          looking for freelance projects where I can deliver real value.
+        </p>
+        <div class="about-buttons">
+          <a href="#contact" class="btn btn-primary">Let's talk</a>
+          <button class="btn btn-outline" id="openVideoBtn">
+            &#9654;&#65039; Watch how I built this
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS SECTION ============ -->
+    <section id="skills" class="section section-alt">
+      <h2 class="section-title reveal">My Skills</h2>
+      <ul class="skills-list reveal">
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>Responsive Design</li>
+        <li>Git &amp; GitHub</li>
+        <li>Problem Solving</li>
+      </ul>
+    </section>
+
+    <!-- ============ PROJECTS SECTION ============ -->
+    <section id="projects" class="section">
+      <h2 class="section-title reveal">My Projects</h2>
+      <div class="projects-grid">
+
+        <!-- Project card 1 -->
+        <article class="project-card reveal">
+          <img src="assets/projects/proj1.png" alt="O Studio Innovations website" loading="lazy">
+          <div class="project-info">
+            <h3>O Studio Innovations</h3>
+            <p>A full business website for a creative studio - services, portfolio, journal, careers, and a start-a-project flow, all in one premium dark design.</p>
+            <div class="project-links">
+              <a href="https://ostudioinnovations.vercel.app/" target="_blank" rel="noopener">Live Demo</a>
+              <a href="https://github.com/osita-dev/ostudioinnovations" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project card 2 -->
+        <article class="project-card reveal">
+          <img src="assets/projects/proj2.png" alt="MIVAPrep quiz dashboard" loading="lazy">
+          <div class="project-info">
+            <h3>MIVAPrep</h3>
+            <p>A quiz prep platform for MIVA students - track accuracy, drill your courses, and revise missed questions with practice, review, and progress views.</p>
+            <div class="project-links">
+              <a href="https://mivaprep.vercel.app/" target="_blank" rel="noopener">Live Demo</a>
+              <a href="https://github.com/osita-dev/mivaprep" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project card 3 -->
+        <article class="project-card reveal">
+          <img src="assets/projects/proj3.png" alt="Visual Experience template library" loading="lazy">
+          <div class="project-info">
+            <h3>Visual Experience</h3>
+            <p>A video template studio - pick a template, add your media, and build fast-cut clips. Browse Ads, Travel, and Trending, or create your own template.</p>
+            <div class="project-links">
+              <a href="https://visualexperience.vercel.app/" target="_blank" rel="noopener">Live Demo</a>
+              <a href="https://github.com/osita-dev/VisualExperience" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ CONTACT SECTION ============ -->
+    <section id="contact" class="section section-alt">
+      <h2 class="section-title reveal">Contact Me</h2>
+
+      <!-- Contact form (validated with JavaScript) -->
+      <form class="contact-form reveal" id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name">
+          <small class="error-message" id="nameError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com">
+          <small class="error-message" id="emailError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..."></textarea>
+          <small class="error-message" id="messageError"></small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+
+        <!-- Success message appears here after valid submit -->
+        <p class="success-message" id="successMessage"></p>
+      </form>
+
+      <!-- Social links -->
+      <div class="social-links">
+        <a href="https://github.com/osita-dev" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/christopher-osita-46b4b6202/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ VIDEO MODAL (how I built this) ============ -->
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-box">
+      <button class="video-modal-close" id="closeVideoBtn" aria-label="Close video">&times;</button>
+      <video id="buildStoryVideo" controls>
+        <source src="assets/build-story.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p class="video-modal-caption">
+        How I built this portfolio - screen recording with voiceover
+      </p>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p>&copy; 2026 Christopher Osita. Built with HTML, CSS, and JavaScript.</p>
+  </footer>
+
+</body>
+</html>
