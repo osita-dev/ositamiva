@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fallback for browsers with JavaScript off: back home after 3 seconds -->
+  <meta http-equiv="refresh" content="3; url=./">
+
+  <title>404 - Page Not Found | Christopher Osita</title>
+
+  <style>
+    /* Self-contained styles - this page cannot depend on any other file */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: #0f0f0f;
+      color: #f5f5f5;
+      font-family: "Segoe UI", Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .box { max-width: 520px; }
+
+    h1 {
+      font-size: 7rem;
+      line-height: 1;
+      color: #3b82f6;
+      text-shadow: 0 4px 30px rgba(59, 130, 246, 0.4);
+    }
+
+    h2 { font-size: 1.6rem; margin: 15px 0 10px; }
+
+    p { color: #a0a0a0; margin-bottom: 30px; line-height: 1.7; }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 32px;
+      border-radius: 50px;
+      background-color: #3b82f6;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #3b82f6;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #2563eb;
+      transform: translateY(-3px);
+    }
+
+    a:focus-visible {
+      outline: 3px solid #3b82f6;
+      outline-offset: 3px;
+    }
+
+    /* Countdown bar - shrinks to zero over 3 seconds */
+    .timer {
+      height: 4px;
+      background-color: #3b82f6;
+      margin-top: 35px;
+      border-radius: 2px;
+      animation: shrink 3s linear forwards;
+    }
+
+    @keyframes shrink {
+      from { width: 100%; }
+      to   { width: 0%; }
+    }
+
+    small { display: block; margin-top: 15px; color: #6b7280; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>404</h1>
+    <h2>Page not found</h2>
+    <p>
+      The address you followed doesn't exist on this site.
+      Don't worry - sending you back to the homepage right now.
+    </p>
+    <a href="./" class="btn" id="homeBtn">Go Home</a>
+    <div class="timer"></div>
+    <small>Redirecting automatically in 3 seconds...</small>
+  </div>
+
+  <script>
+    // Work out where "home" is, even from a deeply nested wrong link.
+    // GitHub Pages sites live at /REPO-NAME/..., so the first path
+    // segment is always the site's folder.
+    var parts = location.pathname.split("/").filter(Boolean);
+    var home = parts.length > 0 ? "/" + parts[0] + "/" : "/";
+
+    // Point the button at the right place too
+    document.getElementById("homeBtn").setAttribute("href", home);
+
+    // Force the visitor back home after 3 seconds
+    setTimeout(function () {
+      location.replace(home);
+    }, 3000);
+  </script>
+</body>
+</html>
