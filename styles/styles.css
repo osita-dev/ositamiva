@@ -6,22 +6,23 @@
    ============================================ */
 
 /* ---------- 1. CSS VARIABLES (colors) ---------- */
+/* Default theme: LIGHT - first launch shows a white screen */
 :root {
-  --bg: #0f0f0f;
-  --bg-alt: #1a1a1a;
-  --text: #f5f5f5;
-  --text-muted: #a0a0a0;
+  --bg: #f5f5f5;
+  --bg-alt: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #555555;
   --accent: #3b82f6;
   --error: #ef4444;
   --success: #22c55e;
 }
 
-/* Light theme - JavaScript adds this class to <body> */
-body.light-theme {
-  --bg: #f5f5f5;
-  --bg-alt: #ffffff;
-  --text: #1a1a1a;
-  --text-muted: #555555;
+/* Dark theme - JavaScript adds this class to <body> when chosen */
+body.dark-theme {
+  --bg: #0f0f0f;
+  --bg-alt: #1a1a1a;
+  --text: #f5f5f5;
+  --text-muted: #a0a0a0;
 }
 
 /* ---------- 2. BASE STYLES ---------- */

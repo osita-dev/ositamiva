@@ -68,25 +68,36 @@ sections.forEach(function (section) {
 });
 
 
-/* ---------- 3. DARK / LIGHT MODE ---------- */
+/* ---------- 3. LIGHT / DARK MODE ---------- */
 const themeToggle = document.getElementById("themeToggle");
 const body = document.body;
 
-// On page load: read the saved theme from localStorage
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme === "light") {
-  body.classList.add("light-theme");
+// Right icon for the current theme: moon in light mode, sun in dark mode
+function updateThemeIcon() {
+  if (body.classList.contains("dark-theme")) {
+    themeToggle.innerHTML = "&#9728;&#65039;";   // sun - click for light
+  } else {
+    themeToggle.innerHTML = "&#127769;";         // moon - click for dark
+  }
 }
 
-// When button is clicked: swap theme and save the choice
-themeToggle.addEventListener("click", function () {
-  body.classList.toggle("light-theme");
+// On page load: default is LIGHT, unless this visitor chose dark before
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  body.classList.add("dark-theme");
+}
+updateThemeIcon();
 
-  if (body.classList.contains("light-theme")) {
-    localStorage.setItem("theme", "light");
-  } else {
+// When button is clicked: swap theme, save the choice, swap the icon
+themeToggle.addEventListener("click", function () {
+  body.classList.toggle("dark-theme");
+
+  if (body.classList.contains("dark-theme")) {
     localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
   }
+  updateThemeIcon();
 });
 
 
