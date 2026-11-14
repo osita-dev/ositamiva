@@ -220,15 +220,10 @@
   <div class="video-modal" id="videoModal" aria-hidden="true">
     <div class="video-modal-box">
       <button class="video-modal-close" id="closeVideoBtn" aria-label="Close video">&times;</button>
-      <iframe
-        id="buildStoryVideo"
-        src="about:blank"
-        data-src="https://www.youtube.com/embed/s8mjLO9ssUA"
-        title="How I built this portfolio - screen recording with voiceover"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+      <video id="buildStoryVideo" controls preload="metadata">
+        <source src="assets/build-story.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
       <p class="video-modal-caption">
         How I built this portfolio - screen recording with voiceover
       </p>

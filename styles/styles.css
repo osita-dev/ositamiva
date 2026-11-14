@@ -656,10 +656,8 @@ textarea:focus-visible {
   padding: 22px;
 }
 
-.video-modal-box iframe {
+.video-modal-box video {
   width: 100%;
-  aspect-ratio: 16 / 9;                /* keeps the YouTube 16:9 shape */
-  border: none;
   border-radius: 8px;
   display: block;
 }
