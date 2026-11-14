@@ -248,19 +248,20 @@ const videoModal = document.getElementById("videoModal");
 const closeVideoBtn = document.getElementById("closeVideoBtn");
 const buildStoryVideo = document.getElementById("buildStoryVideo");
 
+// The real YouTube address, hidden in the HTML as data-src
+const videoURL = buildStoryVideo.getAttribute("data-src");
+
 function openModal() {
   videoModal.classList.add("open");
   videoModal.setAttribute("aria-hidden", "false");
-  buildStoryVideo.play().catch(function () {
-    // if the video file is missing, the modal still opens
-  });
+  buildStoryVideo.src = videoURL + "?autoplay=1";   // video starts at once
   closeVideoBtn.focus();               // keyboard can reach the close button
 }
 
 function closeModal() {
   videoModal.classList.remove("open");
   videoModal.setAttribute("aria-hidden", "true");
-  buildStoryVideo.pause();             // stop the sound too
+  buildStoryVideo.src = "about:blank";  // unloads the iframe -> sound stops
   openVideoBtn.focus();                // focus goes back to where it was
 }
 
